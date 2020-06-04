@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.locators import BasePageLocators
 from selenium.webdriver.remote.webdriver import WebDriver
+import math
 
 class BasePage:
     """
@@ -39,6 +40,7 @@ class BasePage:
         return True
 
     def solve_quiz_and_get_code(self):
+        WebDriverWait(self.driver, 3).until(EC.alert_is_present())
         alert = self.driver.switch_to.alert
         x = alert.text.split(" ")[2]
         answer = str(math.log(abs((12 * math.sin(float(x))))))
@@ -69,3 +71,6 @@ class BasePage:
 
     def should_be_authorized_user(self):
         assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented"
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented: not unauthorised user"

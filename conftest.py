@@ -1,34 +1,27 @@
 import pytest
-from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+#from webdriver_manager.chrome import ChromeDriverManager
 
 def pytest_addoption(parser):
-    parser.addoption('--browser_name', \
-                     action='store', \
-                     default='chrome', \
+    parser.addoption('--browser_name', action='store', default="chrome",
                      help="Choose browser: chrome or firefox")
-    parser.addoption('--language', \
-                     action='store', \
-                     default='es', \
-                     help="Choose language")
+    parser.addoption('--language', action='store', default="en")
 
-@pytest.fixture(scope="function")
-def browser(request):
-    browser_name = request.config.getoption("browser_name")
+@pytest.yield_fixture(scope='function')
+def driver(request):
     user_language = request.config.getoption("language")
+    browser_name = request.config.getoption("browser_name")
     if browser_name == "chrome":
-        print("\nstart browser chrome for test...")
+        print("\nstart chrome browser for test..")
         options = Options()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-        browser = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(options=options)
     elif browser_name == "firefox":
-        print("\nstart browser firefox for test...")
-        fp = webdriver.FirefoxProfile()
-        fp.set_preference("intl.accept_languages", user_language)
-        browser = webdriver.Firefox(firefox_profile=fp)
+        print("\nstart firefox browser for test..")
+        driver = webdriver.Firefox()
     else:
-        print(f"Browser '{browser_name}' still is not implemented")
-    yield browser
-    print("\nquit browser...")
-    browser.quit()
-
+        raise pytest.UsageError("--browser_name should be chrome or firefox")
+    yield driver
+    print("\nquit browser..")
+    driver.quit()

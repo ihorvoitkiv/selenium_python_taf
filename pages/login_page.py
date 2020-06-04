@@ -1,5 +1,5 @@
-from .base_page import BasePage
-from .locators import MainPageLocators
+from pages.base_page import BasePage
+from .locators import BasePageLocators
 from .locators import LoginPageLocators
 
 class LoginPage(BasePage):
@@ -8,13 +8,26 @@ class LoginPage(BasePage):
         self.should_be_login_form()
         self.should_be_register_form()
 
-
     def should_be_login_url(self):
-        assert self.is_element_present(*MainPageLocators.LOGIN_LINK), "Login link is not presented"
-        assert "login" in self.browser.current_url, "'login' is not presented in url"
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+        assert "login" in self.driver.current_url, "'login' is not presented in url"
 
     def should_be_login_form(self):
         assert self.is_element_present(*LoginPageLocators.LOGIN_FORM), "Login form is not presented"
 
     def should_be_register_form(self):
         assert self.is_element_present(*LoginPageLocators.REGISTER_FORM), "Register form is not presented"
+
+    def should_be_register_form(self):
+        assert self.is_element_present(*LoginPageLocators.REGISTER_FORM), "Register form is not peresent"
+
+    def register_new_user(self, email, password):
+        email_field = self.driver.find_element(*LoginPageLocators.REGISTER_EMAIL)
+        email_field.send_keys(email)
+        pass_field1 = self.driver.find_element(*LoginPageLocators.REGISTER_PASSWORD_1)
+        pass_field1.send_keys(password)
+        pass_field2 = self.driver.find_element(*LoginPageLocators.REGISTER_PASSWORD_2)
+        pass_field2.send_keys(password)
+        submit_btn = self.driver.find_element(*LoginPageLocators.REGISTER_BUTTON)
+        submit_btn.click()
+

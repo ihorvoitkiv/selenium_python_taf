@@ -10,14 +10,12 @@ product_link = f"{base_url}catalogue/coders-at-work_207/"
 login_link = f"{base_url}en-gb/accounts/login/"
 
 def test_guest_should_see_login_link_on_product_page(driver):
-    link = product_link
-    page = ProductPage(driver, link)
+    page = ProductPage(driver, product_link)
     page.open()
     page.should_be_login_link()
 
 def test_guest_can_go_to_login_page_from_product_page(driver):
-    link = product_link
-    page = ProductPage(driver, link)
+    page = ProductPage(driver, product_link)
     page.open()
     page.go_to_login_page()
 
@@ -34,27 +32,23 @@ def test_guest_can_add_product_to_basket(driver,n):
 
 @pytest.mark.xfail(reason="wrong message")
 def test_guest_cant_see_success_message_after_adding_product_to_basket(driver):
-    link = product_link
-    product_page = ProductPage(driver, link)
+    product_page = ProductPage(driver, product_link)
     product_page.open()
     product_page.add_to_basket()
     product_page.should_not_be_success_message()
 
 def test_guest_cant_see_success_message(driver):
-    link = product_link
-    product_page = ProductPage(driver, link)
+    product_page = ProductPage(driver, product_link)
     product_page.open()
     product_page.should_not_be_success_message()
 
 def test_message_disappeared_after_adding_product_to_basket(driver):
-    link = product_link
-    product_page = ProductPage(driver, link)
+    product_page = ProductPage(driver, product_link)
     product_page.open()
     product_page.is_dissappeared()
 
 def test_guest_cant_see_product_in_basket_opened_from_product_page(driver):
-    link = product_link
-    product_page = ProductPage(driver,link)
+    product_page = ProductPage(driver,product_link)
     product_page.open()
     product_page.add_to_basket()
     product_page2 = BasketPage(driver, driver.current_url)
@@ -64,8 +58,7 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(driver):
 class TestUserAddToBasketFromProductPage():
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, driver):
-        link = login_link
-        self.login_page = LoginPage(driver, link)
+        self.login_page = LoginPage(driver, login_link)
         self.login_page.open()
         count = random.randint(1, 100)
         email = str(time.time()) + "@fakemail.org"
@@ -73,14 +66,12 @@ class TestUserAddToBasketFromProductPage():
         self.login_page.register_new_user(email, password)
 
     def test_user_cant_see_success_message(self,driver):
-        link = product_link
-        self.product_page = ProductPage(driver, link)
+        self.product_page = ProductPage(driver, product_link)
         self.product_page.open()
         self.product_page.should_not_be_success_message()
 
     def test_user_can_add_product_to_basket(self, driver):
-        link = product_link
-        self.product_page = ProductPage(driver, link)
+        self.product_page = ProductPage(driver, product_link)
         self.product_page.open()
         self.product_page.add_to_basket()
         #self.product_page.solve_quiz_and_get_code()

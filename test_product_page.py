@@ -14,11 +14,13 @@ def test_guest_should_see_login_link_on_product_page(driver):
     page.open()
     page.should_be_login_link()
 
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(driver):
     page = ProductPage(driver, product_link)
     page.open()
     page.go_to_login_page()
 
+@pytest.mark.need_review
 @pytest.mark.xfail(reason="offer is missed")
 @pytest.mark.parametrize('n',["offer0", "offer1", "offer2", "offer3", "offer4", "offer5","offer6","offer7", "offer8", "offer9"])
 def test_guest_can_add_product_to_basket(driver,n):
@@ -47,6 +49,7 @@ def test_message_disappeared_after_adding_product_to_basket(driver):
     product_page.open()
     product_page.is_dissappeared()
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(driver):
     product_page = ProductPage(driver,product_link)
     product_page.open()
@@ -70,6 +73,7 @@ class TestUserAddToBasketFromProductPage():
         self.product_page.open()
         self.product_page.should_not_be_success_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, driver):
         self.product_page = ProductPage(driver, product_link)
         self.product_page.open()

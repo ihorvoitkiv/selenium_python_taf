@@ -1,5 +1,5 @@
-from pages.locators import BasketPageLocators
-from pages.base_page import BasePage
+from .locators import BasketPageLocators
+from .base_page import BasePage
 
 class BasketPage(BasePage):
     def if_basket_is_empty(self):

@@ -16,7 +16,7 @@ def driver(request):
         print("\nstart chrome browser for test..")
         options = Options()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome('/usr/local/bin/chromedriver')
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
         driver = webdriver.Firefox()

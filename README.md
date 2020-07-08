@@ -1,5 +1,5 @@
 The project autotests are implemented using SeleniumWebdriver+Python+Pytest+Allure Framework,
-<br>based on a Page Object pattern for this <a href="http://selenium1py.pythonanywhere.com/en-gb/">Resource</a>: 
+<br>based on a Page Object pattern for this <a href="http://selenium1py.pythonanywhere.com/en-gb/">Resource</a>
 
 ## Getting started
 

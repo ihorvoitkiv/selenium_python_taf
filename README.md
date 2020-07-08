@@ -3,8 +3,6 @@ The project autotests are implemented using Selenium Webdriver+Python+Pytest+All
 
 ## Getting started
 
-These instructions will get you a copy of the project up and running on your local machine for testing purposes:
-
 ```
 git clone https://github.com/ihorvoitkiv/WebUI_test_automation.git
 cd WebUI_test_automation
@@ -15,6 +13,3 @@ pytest --alluredir=allure-results
 allure serve ./allure-results
 deactivate
 ```
-Thanks,
-
-<img src="https://camo.githubusercontent.com/0c7864cfef5de26e967d5ba390371727ce210880/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f68654958354866576745596c572f67697068792e676966">

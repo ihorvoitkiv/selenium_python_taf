@@ -1,4 +1,4 @@
-The project autotests are implemented using Selenium Webdriver+Python+Pytest+Allure Framework,
+The project autotests are implemented using SeleniumWebdriver+Python+Pytest+Allure Framework,
 <br>based on a Page Object pattern for this <a href="http://selenium1py.pythonanywhere.com/en-gb/">Resource</a>: 
 
 ## Getting started
@@ -21,7 +21,7 @@ pip install -r requirements.txt
 ```
 pytest --alluredir=allure-results
 ```
-5. To see the actual report after your tests have finished, you need to use Allure commandline utility to generate report from the results:
+5. to see the actual report after your tests have finished, you need to use Allure commandline utility to generate report from the results:
 ```
 allure serve ./allure-results
 ```

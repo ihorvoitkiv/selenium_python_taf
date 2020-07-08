@@ -1,0 +1,5 @@
+.pytest_cache/
+allure-report/
+allure-results/
+selenium_env/
+venv/

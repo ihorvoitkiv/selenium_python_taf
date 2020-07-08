@@ -32,4 +32,4 @@ deactivate
 
 Thanks,
 
-<img src="https://www.google.com/search?q=+cat+is+coding+gif&tbm=isch&ved=2ahUKEwiWj-GJvb3qAhUDW5oKHd81BzEQ2-cCegQIABAA&oq=+cat+is+coding+gif&gs_lcp=CgNpbWcQAzIECCMQJzoECAAQEzoGCAAQBxAeOggIABAIEAcQHlDjU1iRfWCIgAFoAnAAeACAAWCIAdwGkgECMTCYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=-KMFX5azBYO26QTf65yIAw&bih=721&biw=1440#imgrc=aHKFqglWuSRcqM">
+<img src="https://media3.giphy.com/media/QNFhOolVeCzPQ2Mx85/giphy-downsized.gif">

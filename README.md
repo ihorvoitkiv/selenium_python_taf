@@ -31,5 +31,3 @@ deactivate
 ```
 
 Thanks,
-
-<img src="https://media3.giphy.com/media/QNFhOolVeCzPQ2Mx85/giphy-downsized.gif">

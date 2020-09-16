@@ -1,7 +1,8 @@
 import pytest
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
-#from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default="chrome",
@@ -16,10 +17,12 @@ def driver(request):
         print("\nstart chrome browser for test..")
         options = Options()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-        driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+        #driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+        driver = webdriver.Chrome(ChromeDriverManager().install())
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
-        driver = webdriver.Firefox()
+        #driver = webdriver.Firefox()
+        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield driver
